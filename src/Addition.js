@@ -36,8 +36,6 @@ class Add extends React.Component{
           <input type= "Text" value = {this.state.val2} onChange= {(event) => {this.handleInput2(event.target.value)}}/>
       <button type="button" onClick={this.addTwo} > Add </button>
 
-      {this.state.val1}
-      {this.state.val2}
        <label> {this.state.result} </label>
 
        </form>
@@ -52,7 +50,14 @@ class Add extends React.Component{
     this.setState({val2: value});
   }
   addTwo(){
-    let a = parseInt(this.state.val1)+ parseInt(this.state.val2);
+    let a;
+    if(((this.state.val1)%1 !=0)||((this.state.val2)%1!=0)){
+       a = "please enter the numbers";
+    }
+    else{
+      a = parseInt(this.state.val1)+ parseInt(this.state.val2);
+    }
+
     this.setState({result: a});
   }
 
